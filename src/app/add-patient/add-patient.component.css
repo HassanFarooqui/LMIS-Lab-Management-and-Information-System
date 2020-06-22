@@ -1,0 +1,33 @@
+mat-card{
+        /* padding: 100px; */
+        width: 1240px;
+        margin-left: 42px;
+        background-color: white;
+        height: 415px;
+       
+}
+h1{
+    color: black;
+    text-align: center;
+    padding-top: 8px ;
+}
+
+mat-radio-button {
+    padding-right: 17px;
+    padding-left: 5px;
+}
+
+.selectpadding{
+    padding-right: 13px;
+}
+
+.paddingleft{
+    padding-right: 15px;
+}
+
+div.container{
+    margin: 0px 30px;
+}
+.GreyLabel{
+    font-family:Arial, Helvetica;
+}

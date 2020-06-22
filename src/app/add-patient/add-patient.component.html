@@ -1,0 +1,214 @@
+<h1>Add Patient</h1>
+
+<div class="container">
+    <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>
+            <mat-label routerLink="/patient" class="GreyLabel" style="cursor:pointer;"> Patient List </mat-label>
+        </span>
+        <span> / Add Patient</span>
+        <span class="fill-remaining-space"> </span>
+    </mat-toolbar>
+</div>
+<!-- <div>
+    <button mat-raised-button routerLink="/patient">Back to Patient List </button>
+</div> -->
+<mat-card>
+    <div style="width: 400px;">
+        <mat-grid-list cols="2" rowHeight="8:2">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>BarCode(PID):</mat-label>
+                    <input matInput placeholder="XX-XXXXPXXXXX :" type="text" name="BarCode" readonly>
+                    <mat-hint align="end">Auto generate by System</mat-hint>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Date:</mat-label>
+                    <input matInput placeholder="" type="date" [(ngModel)] = "Date">
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <div style="width: 600px;">
+        <mat-grid-list cols="3" rowHeight="6:3">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>First Name:</mat-label>
+                    <input required #fName="ngModel" matInput [(ngModel)]="firstName" name="first" placeholder="John"
+                        type="text">
+                    <mat-error *ngIf="fName.invalid&&fName.dirty">Input required</mat-error>
+                    <!-- <p>{{firstName1.invalid }} {{firstName1.dirty}} </p> -->
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Last Name:</mat-label>
+                    <input matInput placeholder="wick" type="text" [(ngModel)] = "LastName" >
+
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Guardian Name:</mat-label>
+                    <input #gName="ngModel" [(ngModel)]="guardianName" matInput placeholder="Guardian's Name"
+                        type="text" required>
+                    <mat-error *ngIf="gName.invalid&&gName.invalid&&gName.dirty">Input required</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div style="width: 1000px;">
+        <mat-grid-list cols="5" rowHeight="6:2">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Age:</mat-label>
+                    <input #ageinyear="ngModel" [(ngModel)]="age" matInput placeholder="John" type="text" required
+                        pattern="[1-100]*" minlength="1" maxlength="3">
+                    <mat-error *ngIf="ageinyear.invalid&&ageinyear.dirty">Input required</mat-error>
+                    <mat-hint align="end">Age must be in 1 to 100</mat-hint>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="selectpadding">
+                    <mat-label>Gender:</mat-label>
+                    <mat-select required [(ngModel)]="genderId">
+                        <mat-option value="0" [disabled]="true">--Select--</mat-option>
+                        <mat-option *ngFor="let g of GenderList" [(value)]="g.GenderID">{{g.Description}}</mat-option>
+                    </mat-select>
+                    <mat-error>Please choose gender</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Mobile No:</mat-label>
+                    <input #mobile="ngModel" [(ngModel)]="mobileNo" matInput placeholder="Mobile No" type="text"
+                        required>
+                    <mat-error *ngIf="mobile.invalid&&mobile.dirty">Input required</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>CNIC:</mat-label>
+                    <input #cnicNo="ngModel" [(ngModel)]="cNIC" matInput placeholder="CNIC" type="text" required>
+                    <mat-error *ngIf=cnicNo.invalid&&cnicNo.dirty>Input required</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Address:</mat-label>
+                    <input matInput placeholder="Address" type="text" [(ngModel)] = "Address" >
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <div style="width: 800px;">
+        <mat-grid-list cols="5" rowHeight="6:2">
+            <mat-grid-tile>
+                <mat-radio-group>
+                    <mat-label>Diabetes:</mat-label><br>
+                    <input type="radio" value="1" name="gender" [(ngModel)]="Diabetes"> Yes
+                    <input type="radio" value="0" name="gender" [(ngModel)]="Diabetes"> No
+                </mat-radio-group>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-radio-group>
+                    <mat-label>TB:</mat-label> <br>
+                    <input type="radio" value="1" name="TB" [(ngModel)]="TB"> Yes
+                    <input type="radio" value="0" name="TB" [(ngModel)]="TB"> No
+                </mat-radio-group>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-radio-group>
+                    <mat-label>Hepatitis:</mat-label> <br>
+                    <input type="radio" value="1" name="Hepatitis" [(ngModel)]="Hepatitis"> Yes
+                    <input type="radio" value="0" name="Hepatitis" [(ngModel)]="Hepatitis"> No
+                </mat-radio-group>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-radio-group>
+                    <mat-label>Fever: </mat-label> <br>
+                    <input type="radio" value="1" name="Fever" [(ngModel)]="Fever"> Yes
+                    <input type="radio" value="0" name="Fever" [(ngModel)]="Fever"> No
+                </mat-radio-group>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-radio-group>
+                    <mat-label>Ohter: </mat-label> <br>
+                    <input type="radio" value="1" name="Ohter" [(ngModel)]="Ohter"> Yes
+                    <input type="radio" value="0" name="Ohter" [(ngModel)]="Ohter"> No
+                </mat-radio-group>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <div style="width: 400px;">
+        <mat-grid-list cols="2" rowHeight="6:2">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Department's Name:</mat-label>
+                    <input matInput placeholder="Department's Name" type="text" [(ngModel)]= "Department">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Emp/ Referrence Code:</mat-label>
+                    <input matInput placeholder="XXXXXX" type="text" [(ngModel)] = "EmpRefCode">
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div style="width: 900px;">
+        <mat-grid-list cols="4" rowHeight="8:3">
+            <mat-grid-tile>
+                <mat-form-field class="selectpadding">
+                    <mat-label>Referred Type:</mat-label>
+                    <mat-select [(ngModel)]="ReferredTypeId" (selectionChange)="RefferIdSelected()" required>
+                        <mat-option value="0" [disabled]="true">--Select--</mat-option>
+                        <mat-option *ngFor="let q of ReferrelList" [(value)]="q.ReferredTypeId"
+                            (change)="RefferIdSelected()">{{q.ReferredTypeName}}
+                        </mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="selectpadding" >
+                    <mat-label>Partner Name:</mat-label>
+                    <mat-select [(ngModel)]="PratnerId" [disabled] ="(ReferredTypeId == 2)">
+                        <mat-option value="0">--Select--</mat-option>
+                        <mat-option *ngFor="let r of PartnerList" [(value)]="r.ReferringPartnerID">
+                            {{r.ReferringPartnerName}}</mat-option>
+                    </mat-select>
+                    <mat-error>Please choose gender</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="selectpadding">
+                    <mat-label>Panel Name:</mat-label>
+                    <mat-select [(ngModel)]="PanelMasterId" >
+                        <mat-option value="0">--Select--</mat-option>
+                        <mat-option *ngFor="let a of PanelList" [(value)]="a.PanelMasterId">{{a.PanelName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-label>Status:</mat-label><br />
+                <mat-checkbox [(ngModel)]="Status"></mat-checkbox>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+
+    <div>      
+        <button mat-raised-button color="primary" (click)="AddPatient()" [disabled]="fName.invalid || gName.invalid || mobile.invalid || cnicNo.invalid">Save</button>
+        <button mat-raised-button color="warn">OPD</button>
+        <button mat-raised-button color="accent">Lab Booking</button>
+        <button mat-raised-button color="primary">Add New</button>
+    </div>
+
+</mat-card>

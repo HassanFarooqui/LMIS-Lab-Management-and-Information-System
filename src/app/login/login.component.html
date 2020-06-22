@@ -1,0 +1,24 @@
+
+<div *ngIf = "!IsAuthenticUser;else elseBlock" fxLayoutAlign="center center" fxFlexFill class="main-div" > 
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Login Page </mat-toolbar>
+        <div fxLayoutAlign="stretch" fxLayout="column" class="Login-form">
+            <mat-form-field floatLabel="always" >
+              <mat-label>User Name:</mat-label>
+              <input #model ="ngModel" matInput [(ngModel)]="userName" required >
+              <mat-error *ngIf="model.invalid&&model.dirty">Input required</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field floatLabel="always">
+                <mat-label>Password:</mat-label>
+                <input #model = "ngModel" matInput type="password" [(ngModel)]="password" required>
+                <mat-error *ngIf="model.invalid&&model.dirty">Input required</mat-error>
+              </mat-form-field>
+            <button mat-raised-button type="submit" color="primary"(click) ="checkLogin()">Login</button>
+            </div>          
+    </mat-card>
+</div>
+
+<ng-template #elseBlock>
+<app-dashboard></app-dashboard>
+</ng-template>
