@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SettingsService } from '../app/Services/settings.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,7 @@ export class AppServiceService {
   }
 
   listOfPatient() : any{
-    let url = this.baseUrl+'Home/GetPatientList';
+    let url = this.baseUrl+'Patient/GetPatientList';
     return this.http.get(url);
   }
 
@@ -40,26 +41,13 @@ export class AppServiceService {
     return this.http.get(url);
   }
 
-  addPatient(firstName : any, lastName : any, guardian : any, age : any, gender : any, mobileNumber : any, cnic : any, address: any, diabetes: any, tB:any, hepatitis: any, fever: any, ohter: any, departmentName: any, empRefNo: any, referredTypeId : any, partnerName: any, panelName: any, status: any ){
+  addPatient(firstName : any, lastName : any, guardian : any, age : any, gender : any, mobileNumber : any, cnic : any, address: any, diabetes: any, tB:any, hepatitis: any, fever: any, other: any, departmentName: any, empRefNo: any, referredTypeId : any, partnerName: any, panelName: any, status: any ): any {
     let url = this.baseUrl+'Patient/AddPatient';
-    let pt = {
-      FirstName: firstName,
-      LastName: lastName,
-      Age: age,
-      MobileNo: mobileNumber,
-      Address: address,
-      CNIC: cnic,
-      IsActive: status,
-      ReferredTypeId: referredTypeId,
-      ReferringPartnerID: partnerName,
-      GenderID: gender,
-      DepartmentName: departmentName,
-      EmpReferrenceNo: empRefNo
-
-    };
+    
     let payload = new HttpParams()
     .set('FirstName', firstName)
-    .set('FirstName', lastName)
+    .set('LastName', lastName)
+    .set('GuardianName', guardian)
     .set('Age', age)
     .set('MobileNo', mobileNumber)
     .set('Address', address)
@@ -67,14 +55,22 @@ export class AppServiceService {
     .set('IsActive', status)
     .set('ReferredTypeId', referredTypeId)
     .set('ReferringPartnerID', partnerName)
+    .set('PanelId',panelName)
     .set('GenderID', gender)
     .set('DepartmentName', departmentName)
     .set('EmpReferrenceNo', empRefNo)
-    // .set('GenderID', gender)
+    .set('Diabetes', diabetes)
+    .set('TB',tB)
+    .set('Hepatitis',hepatitis)
+    .set('Fever',fever)
+    .set('Other',other)
 
   return this.http.post(url, payload);
-    
-  return this.http.post(url,pt)
+  }  
+  
+  getPatientRecbyId(PatientId: any): any{
+    let url = this.baseUrl + 'Patient/GetPatientRecordByID?ID=' + PatientId;
+    return this.http.get(url);
 
   }
 

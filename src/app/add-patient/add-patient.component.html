@@ -66,7 +66,7 @@
                 <mat-form-field>
                     <mat-label>Age:</mat-label>
                     <input #ageinyear="ngModel" [(ngModel)]="age" matInput placeholder="John" type="text" required
-                        pattern="[1-100]*" minlength="1" maxlength="3">
+                        pattern="[0-9]*" minlength="1" maxlength="2">
                     <mat-error *ngIf="ageinyear.invalid&&ageinyear.dirty">Input required</mat-error>
                     <mat-hint align="end">Age must be in 1 to 100</mat-hint>
                 </mat-form-field>
@@ -85,8 +85,8 @@
                 <mat-form-field>
                     <mat-label>Mobile No:</mat-label>
                     <input #mobile="ngModel" [(ngModel)]="mobileNo" matInput placeholder="Mobile No" type="text"
-                        required>
-                    <mat-error *ngIf="mobile.invalid&&mobile.dirty">Input required</mat-error>
+                        required pattern="^(03)?[0-9]{9}$">
+                    <mat-error *ngIf="mobile.invalid&&mobile.dirty">Mobile no must be 11 Digits</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
@@ -99,7 +99,7 @@
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Address:</mat-label>
-                    <input matInput placeholder="Address" type="text" [(ngModel)] = "Address" >
+                    <input matInput placeholder="Address" type="text" [(ngModel)] = "address" >
                 </mat-form-field>
             </mat-grid-tile>
         </mat-grid-list>
@@ -139,8 +139,8 @@
             <mat-grid-tile>
                 <mat-radio-group>
                     <mat-label>Ohter: </mat-label> <br>
-                    <input type="radio" value="1" name="Ohter" [(ngModel)]="Ohter"> Yes
-                    <input type="radio" value="0" name="Ohter" [(ngModel)]="Ohter"> No
+                    <input type="radio" value="1" name="Other" [(ngModel)]="Other"> Yes
+                    <input type="radio" value="0" name="Other" [(ngModel)]="Other"> No
                 </mat-radio-group>
             </mat-grid-tile>
         </mat-grid-list>

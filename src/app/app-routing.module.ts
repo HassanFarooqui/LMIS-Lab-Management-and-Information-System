@@ -9,7 +9,7 @@ import { PatientComponent } from '../app/patient/patient.component';
 const routes: Routes = [
   // { path : '', component: LoginComponent},
   // { path : 'dashboard', component: DashboardComponent},
-  { path: 'addPatient', component: AddPatientComponent },
+  { path: 'addPatient/:id', component: AddPatientComponent },
   { path: 'patient', component: PatientComponent }
 ];
 

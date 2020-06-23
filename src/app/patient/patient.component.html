@@ -3,7 +3,7 @@
 <mat-divider></mat-divider>
 
 <div  class="button">
-    <button mat-raised-button color="primary" routerLink="/addPatient">Add Patient </button>
+    <button mat-raised-button color="primary" (click)="Add()">Add Patient </button>
 </div>
 <div class="table_class">
     <table mat-table [dataSource]="patientList" class="mat-elevation-z8">
@@ -48,7 +48,8 @@
         <ng-container matColumnDef="Actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="primary" >Edit</button>
+                <button mat-raised-button color="primary" (click)= "Edit(element.ID)"      
+                  >Edit</button>
                 <button mat-raised-button color="warn">Delete</button>
             </td>
         </ng-container>

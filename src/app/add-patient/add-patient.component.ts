@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from '../app-service.service';
 import { FormControl } from '@angular/forms';
-
-// import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageService } from '../shared/message.service';
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -23,7 +25,7 @@ export class AddPatientComponent implements OnInit {
   TB: any = "0";
   Hepatitis: any = "0";
   Fever: any = "0";
-  Ohter: any = "0";
+  Other: any = "0";
   firstName: string;
   guardianName: string;
   age: any;
@@ -40,17 +42,52 @@ export class AddPatientComponent implements OnInit {
   LastName: string;
   Department: string;
   EmpRefCode: string;
+  PatientID: number=0;
+  ReferringPartnerID: any;
 
   date = new FormControl(new Date());
-  constructor(private appService: AppServiceService) { }
+  constructor(private appService: AppServiceService,
+              private snackbar: MatSnackBar,
+              private msg: MessageService,
+              private routeParams: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getReferralTypeList();
     this.getPartnerNamesList();
     this.getPanelNamesList();
     this.getGenderNamesList();
+    this.PatientID = +this.routeParams.snapshot.paramMap.get('id');
+    if  (this.PatientID > 0){
+      this.getPatientRec();
+    }
   }
 
+  getPatientRec(){
+    this.appService.getPatientRecbyId(this.PatientID).subscribe(
+      Response =>{
+        if(Response.success){
+          this.firstName = Response.model[0].FirstName;
+          this.LastName = Response.model[0].LastName;
+          this.guardianName = Response.model[0].GuardianName;
+          this.age = Response.model[0].Age;
+          this.genderId = Response.model[0].GenderID;
+          this.mobileNo = Response.model[0].MobileNo;
+          this.address = Response.model[0].Address;
+          this.cNIC = Response.model[0].CNIC;
+          this.Diabetes = Response.model[0].Diabetes;
+          this.TB = Response.model[0].TB;
+          this.Hepatitis = Response.model[0].Hepatitis;
+          this.Fever = Response.model[0].Fever;
+          this.Other = Response.model[0].Other;
+          this.Department = Response.model[0].DepartmentName;
+          this.EmpRefCode = Response.model[0].EmpReferrenceNo;
+          this.PanelMasterId = Response.model[0].panelID;
+          this.ReferringPartnerID = Response.model[0].ReferringPartnerID;
+          this.ReferredTypeId = Response.model[0].ReferredTypeId;
+          //
+        }
+    })
+  }
   getReferralTypeList() {
     this.appService.listOfReferralType().subscribe(
       Response => {
@@ -96,9 +133,19 @@ export class AddPatientComponent implements OnInit {
   }
 
   AddPatient() {
-    this.appService.addPatient(this.firstName, this.LastName, this.guardianName, this.age, this.genderId, this.mobileNo, this.cNIC, this.address, this.Diabetes, this.TB, this.Hepatitis, this.Fever, this.Ohter, this.Department, this.EmpRefCode, this.ReferredTypeId, this.PratnerId, this.PanelMasterId, this.Status).subscribe(
-      resp => {
-        console.log(resp);
+    this.appService.addPatient(this.firstName, this.LastName, this.guardianName, this.age, this.genderId, this.mobileNo, this.cNIC, this.address, this.Diabetes, this.TB, this.Hepatitis, this.Fever, this.Other, this.Department, this.EmpRefCode, this.ReferredTypeId, this.PratnerId, this.PanelMasterId, this.Status).subscribe(
+      Response => {
+        if (Response.success) {
+          this.snackbar.open(Response.message, 'Save successfully', {
+            duration: 2000,
+          });
+          
+        }
+        else{
+          this.snackbar.open(Response.message, 'Failed to save record',{
+            duration: 2000,
+          });
+        }
       },
       error => {
 
