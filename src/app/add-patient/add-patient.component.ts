@@ -6,7 +6,8 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageService } from '../shared/message.service';
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
-
+import { PatientComponent } from '../patient/patient.component';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -21,11 +22,16 @@ export class AddPatientComponent implements OnInit {
   selected: any;
   male: boolean = false;
   Status: boolean = true;
-  Diabetes: any = "0";
-  TB: any = "0";
-  Hepatitis: any = "0";
-  Fever: any = "0";
-  Other: any = "0";
+  Diabetes: boolean = false;
+  //Diabetes: any = "0";
+  TB: boolean = false;
+  // TB: any = "0";
+  Hepatitis: boolean = false;
+  //Hepatitis: any = "0";
+  Fever: boolean = false;
+  //Fever: any = "0";
+  Other: boolean = false;
+  //Other: any = "0";
   firstName: string;
   guardianName: string;
   age: any;
@@ -49,7 +55,8 @@ export class AddPatientComponent implements OnInit {
   constructor(private appService: AppServiceService,
               private snackbar: MatSnackBar,
               private msg: MessageService,
-              private routeParams: ActivatedRoute) { }
+              private routeParams: ActivatedRoute,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.getReferralTypeList();
@@ -133,17 +140,17 @@ export class AddPatientComponent implements OnInit {
   }
 
   AddPatient() {
-    this.appService.addPatient(this.firstName, this.LastName, this.guardianName, this.age, this.genderId, this.mobileNo, this.cNIC, this.address, this.Diabetes, this.TB, this.Hepatitis, this.Fever, this.Other, this.Department, this.EmpRefCode, this.ReferredTypeId, this.PratnerId, this.PanelMasterId, this.Status).subscribe(
+    this.appService.addOrEditPatient(this.PatientID, this.firstName, this.LastName, this.guardianName, this.age, this.genderId, this.mobileNo, this.cNIC, this.address, this.Diabetes, this.TB, this.Hepatitis, this.Fever, this.Other, this.Department, this.EmpRefCode, this.ReferredTypeId, this.PratnerId, this.PanelMasterId, this.Status).subscribe(
       Response => {
         if (Response.success) {
-          this.snackbar.open(Response.message, 'Save successfully', {
-            duration: 2000,
+          this.snackbar.open(Response.message, null, {
+            duration: 5000,
           });
-          
+          this.router.navigate(['patient']);
         }
         else{
-          this.snackbar.open(Response.message, 'Failed to save record',{
-            duration: 2000,
+          this.snackbar.open(Response.message, null,{
+            duration: 5000,
           });
         }
       },

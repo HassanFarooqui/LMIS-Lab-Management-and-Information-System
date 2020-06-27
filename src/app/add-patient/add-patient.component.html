@@ -110,37 +110,37 @@
             <mat-grid-tile>
                 <mat-radio-group>
                     <mat-label>Diabetes:</mat-label><br>
-                    <input type="radio" value="1" name="gender" [(ngModel)]="Diabetes"> Yes
-                    <input type="radio" value="0" name="gender" [(ngModel)]="Diabetes"> No
+                    <input type="radio" [value]="true" name="gender" [(ngModel)]="Diabetes"> Yes
+                    <input type="radio" [value]="false" name="gender" [(ngModel)]="Diabetes"> No
                 </mat-radio-group>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-radio-group>
                     <mat-label>TB:</mat-label> <br>
-                    <input type="radio" value="1" name="TB" [(ngModel)]="TB"> Yes
-                    <input type="radio" value="0" name="TB" [(ngModel)]="TB"> No
+                    <input type="radio" [value]= "true" name="TB" [(ngModel)]="TB"> Yes
+                    <input type="radio" [value]= "false" name="TB" [(ngModel)]="TB"> No
                 </mat-radio-group>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-radio-group>
                     <mat-label>Hepatitis:</mat-label> <br>
-                    <input type="radio" value="1" name="Hepatitis" [(ngModel)]="Hepatitis"> Yes
-                    <input type="radio" value="0" name="Hepatitis" [(ngModel)]="Hepatitis"> No
+                    <input type="radio" [value]="true" name="Hepatitis" [(ngModel)]="Hepatitis"> Yes
+                    <input type="radio" [value]="false" name="Hepatitis" [(ngModel)]="Hepatitis"> No
                 </mat-radio-group>
             </mat-grid-tile>
 
             <mat-grid-tile>
                 <mat-radio-group>
                     <mat-label>Fever: </mat-label> <br>
-                    <input type="radio" value="1" name="Fever" [(ngModel)]="Fever"> Yes
-                    <input type="radio" value="0" name="Fever" [(ngModel)]="Fever"> No
+                    <input type="radio" [value]="true" name="Fever" [(ngModel)]="Fever"> Yes
+                    <input type="radio" [value]="false" name="Fever" [(ngModel)]="Fever"> No
                 </mat-radio-group>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-radio-group>
                     <mat-label>Ohter: </mat-label> <br>
-                    <input type="radio" value="1" name="Other" [(ngModel)]="Other"> Yes
-                    <input type="radio" value="0" name="Other" [(ngModel)]="Other"> No
+                    <input type="radio" [value]="true" name="Other" [(ngModel)]="Other"> Yes
+                    <input type="radio" [value]="false" name="Other" [(ngModel)]="Other"> No
                 </mat-radio-group>
             </mat-grid-tile>
         </mat-grid-list>
@@ -205,7 +205,8 @@
 
 
     <div>      
-        <button mat-raised-button color="primary" (click)="AddPatient()" [disabled]="fName.invalid || gName.invalid || mobile.invalid || cnicNo.invalid">Save</button>
+        <button *ngIf = "PatientID == 0" mat-raised-button color="primary" (click)="AddPatient()" [disabled]="fName.invalid || gName.invalid || mobile.invalid || cnicNo.invalid">Save</button>
+        <button *ngIf = "PatientID > 0" mat-raised-button color="primary" (click)="AddPatient()" [disabled]="fName.invalid || gName.invalid || mobile.invalid || cnicNo.invalid">Edit</button>
         <button mat-raised-button color="warn">OPD</button>
         <button mat-raised-button color="accent">Lab Booking</button>
         <button mat-raised-button color="primary">Add New</button>

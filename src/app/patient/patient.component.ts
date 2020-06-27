@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from '../app-service.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 @Component({
   selector: 'app-patient',
@@ -12,7 +12,8 @@ export class PatientComponent implements OnInit {
 
   patientList : any[];
   constructor(private appService :  AppServiceService,
-              private router: Router) {
+              private router: Router,
+              private spinnerService : NgxSpinnerService) {
                 
               }
   
@@ -23,12 +24,13 @@ export class PatientComponent implements OnInit {
 
 
   getPatientList() {
-    
+    this.spinnerService.show();
       this.appService.listOfPatient().subscribe(
         response => {
           if (response.success) {
             this.patientList = response.model;
            // this.router.navigate(['dashboard']);
+           this.spinnerService.hide();
           }
         }
       )

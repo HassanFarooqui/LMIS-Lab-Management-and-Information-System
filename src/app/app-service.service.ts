@@ -41,10 +41,15 @@ export class AppServiceService {
     return this.http.get(url);
   }
 
-  addPatient(firstName : any, lastName : any, guardian : any, age : any, gender : any, mobileNumber : any, cnic : any, address: any, diabetes: any, tB:any, hepatitis: any, fever: any, other: any, departmentName: any, empRefNo: any, referredTypeId : any, partnerName: any, panelName: any, status: any ): any {
-    let url = this.baseUrl+'Patient/AddPatient';
+  addOrEditPatient(Id : any, firstName : any, lastName : any, guardian : any, age : any, gender : any, mobileNumber : any, cnic : any, address: any, diabetes: any, tB:any, hepatitis: any, fever: any, other: any, departmentName: any, empRefNo: any, referredTypeId : any, partnerName: any, panelName: any, status: any ): any {
+    let url : string;
+     if(Id == 0)
+     url = this.baseUrl+'Patient/AddPatient';
+     else
+     url = this.baseUrl+'Patient/EditPatientRec';
     
     let payload = new HttpParams()
+    .set('Id', Id)
     .set('FirstName', firstName)
     .set('LastName', lastName)
     .set('GuardianName', guardian)

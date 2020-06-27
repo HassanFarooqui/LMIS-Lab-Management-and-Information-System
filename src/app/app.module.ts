@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +53,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatSnackBarModule
-  
+    MatSnackBarModule,
+    NgxSpinnerModule
     
   ],
   providers: [],
