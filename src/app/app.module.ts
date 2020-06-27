@@ -25,6 +25,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { TestListComponent } from './app/test-list/test-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     InterpolationtestComponent,
     DashboardComponent,
     AddPatientComponent,
-    PatientComponent
+    PatientComponent,
+    TestListComponent
   ],
   imports: [
     BrowserModule,

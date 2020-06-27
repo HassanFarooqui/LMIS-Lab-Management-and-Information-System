@@ -179,7 +179,7 @@
             <mat-grid-tile>
                 <mat-form-field class="selectpadding" >
                     <mat-label>Partner Name:</mat-label>
-                    <mat-select [(ngModel)]="PratnerId" [disabled] ="(ReferredTypeId == 2)">
+                    <mat-select [(ngModel)]="ReferringPartnerID" [disabled] ="(ReferredTypeId == 2)">
                         <mat-option value="0">--Select--</mat-option>
                         <mat-option *ngFor="let r of PartnerList" [(value)]="r.ReferringPartnerID">
                             {{r.ReferringPartnerName}}</mat-option>
