@@ -1,0 +1,18 @@
+/* Structure */
+table {
+    width: 95%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 95%;
+    padding-left: 25px;
+  }
+  .table_class{
+    padding-left: 25px;
+}
+
+.button{
+    padding:8px;
+    margin-left: 1199px;
+}

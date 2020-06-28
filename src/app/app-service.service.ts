@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SettingsService } from '../app/Services/settings.service';
+import { TestBed } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -79,7 +80,10 @@ export class AppServiceService {
 
   }
 
-
+  listOfTest(): any{
+    let url = this.baseUrl + 'Test/GetTestList'
+    return this.http.get(url);
+  }
 }
 
 

@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   PatientInfo() {
             this.router.navigate(['add-patient']);
   }

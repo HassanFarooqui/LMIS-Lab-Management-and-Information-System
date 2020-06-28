@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     private msg: MessageService) { }
 
   ngOnInit(): void {
+    console.log("login ");
   }
 
   checkLogin() {
