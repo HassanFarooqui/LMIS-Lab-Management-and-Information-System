@@ -9,3 +9,52 @@
         <span class="fill-remaining-space"> </span>
     </mat-toolbar>
 </div>
+
+<mat-card>
+    <div style="width: 1100px;">
+        <mat-grid-list cols="5" rowHeight="8:2">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Test Name:</mat-label>
+                    <input required matInput placeholder="Covid 19:" type="text" name="Test Name">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Test Charges:</mat-label>
+                    <input required matInput placeholder="" type="number" >
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Max. Discount :</mat-label>
+                    <input matInput placeholder="" type="number" >
+                    <mat-hint align="end">Discount must be in %</mat-hint>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Disc. Amount in Rupees:</mat-label>
+                    <input matInput placeholder="" type="number" >
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Net Charges:</mat-label>
+                    <input matInput placeholder="" type="number" >
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </div>
+
+
+    <div>      
+        <button  mat-raised-button color="primary" >Save</button>
+        
+    </div>
+
+</mat-card>
