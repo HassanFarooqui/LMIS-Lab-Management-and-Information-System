@@ -16,20 +16,20 @@
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Test Name:</mat-label>
-                    <input required matInput placeholder="Covid 19:" type="text" name="Test Name">
+                    <input required #TName= "ngModel" [(ngModel)]="TestName" matInput placeholder="Covid 19:"  type="text" name="Test Name">
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Test Charges:</mat-label>
-                    <input required matInput placeholder="" type="number" >
+                    <input required #TCharges= "ngModel" [(ngModel)]="TestCharges" matInput placeholder="" type="number" >
                 </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Max. Discount :</mat-label>
-                    <input matInput placeholder="" type="number" >
+                    <input required #TDisc= "ngModel" [(ngModel)]="TestDiscPerc" matInput placeholder="" type="number" (keyup) = "calculateDiscount()" >
                     <mat-hint align="end">Discount must be in %</mat-hint>
                 </mat-form-field>
             </mat-grid-tile>
@@ -37,14 +37,16 @@
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Disc. Amount in Rupees:</mat-label>
-                    <input matInput placeholder="" type="number" >
+                    <input #TDiscAmount= "ngModel" [(ngModel)]="TestDiscAmount" matInput placeholder="" type="number" readonly>
+                    <mat-hint align="end">Calculate by System</mat-hint>
                 </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Net Charges:</mat-label>
-                    <input matInput placeholder="" type="number" >
+                    <input  #TNetcharges= "ngModel" [(ngModel)]="TestNetcharges" matInput placeholder="" type="number" readonly>
+                    <mat-hint align="end">Calculate by System</mat-hint>
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -53,8 +55,7 @@
 
 
     <div>      
-        <button  mat-raised-button color="primary" >Save</button>
-        
+        <button mat-raised-button color="primary" >Save</button>        
     </div>
 
 </mat-card>
