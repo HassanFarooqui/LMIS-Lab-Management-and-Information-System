@@ -84,6 +84,24 @@ export class AppServiceService {
     let url = this.baseUrl + 'Test/GetTestList'
     return this.http.get(url);
   }
+
+  addOrEditTest( TestId : any, TestName: any,  TestCharges : any, TestDiscPerc : any, TestDiscAmount : any, TestNetCharges : any, status: any) : any {
+    let url : string;
+    if(TestId == 0)
+    url = this.baseUrl+'Test/AddTest';
+    else
+    url = this.baseUrl+'Test/EditPatientRec';
+   
+   let payload = new HttpParams()
+   .set('TestId', TestId)
+   .set('TestName', TestName)
+   .set('TestCharges', TestCharges)
+   .set('TestDiscPerc', TestDiscPerc)
+   .set('TestDiscAmount', TestDiscAmount)
+   .set('NetCharges', TestNetCharges)
+   .set('IsActive', status)
+   return this.http.post(url, payload);
+  }
 }
 
 
