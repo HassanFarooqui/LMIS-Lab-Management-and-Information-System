@@ -3,7 +3,8 @@ import { AppServiceService } from '../app-service.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import {MatTableModule, MatTableDataSource} from '@angular/material/table';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddtestComponent } from '../addtest/addtest.component';
 @Component({
   selector: 'app-test-list',
   templateUrl: './test-list.component.html',
@@ -19,7 +20,8 @@ export class TestListComponent implements OnInit {
   constructor(private appService: AppServiceService,
     private router: Router,
     private spinnerService: NgxSpinnerService,
-    private MatTableModule: MatTableModule) { }
+    private MatTableModule: MatTableModule,
+    public dialog: MatDialog) { }
    
     TestListDataSource = new MatTableDataSource(this.testList);
    
@@ -31,10 +33,19 @@ export class TestListComponent implements OnInit {
     this.TestListDataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  Add(){
-    let routerUrl = '/addTest';
-    this.router.navigate([routerUrl])
-  }
+  Add() : void{
+    //let routerUrl = '/addTest';
+    //this.router.navigate([routerUrl])
+  
+    
+      const dialogRef = this.dialog.open(AddtestComponent, {
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
+
 
   Edit(){
   }

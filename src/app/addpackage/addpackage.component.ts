@@ -12,6 +12,7 @@ export class AddpackageComponent implements OnInit {
   //displayedColumns: string[] = ['TestID', 'TestName' ];
   dropdownList = [];
   selectedItems = [];
+  
   dropdownSettings: IDropdownSettings;
 
 
@@ -35,7 +36,9 @@ export class AddpackageComponent implements OnInit {
   }
   onItemSelect(item: any) {
     this.selectedItems.push(item.TestName);
-    console.log(this.selectedItems);
+    
+    console.log(this.dropdownList);
+
     this.TestListDataSource = new MatTableDataSource(this.selectedItems);
   }
   onSelectAll(items: any) {

@@ -31,6 +31,8 @@ import { PanellistComponent } from './panellist/panellist.component';
 import { AddpanelComponent } from './addpanel/addpanel.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddpackageComponent } from './addpackage/addpackage.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,8 @@ import { AddpackageComponent } from './addpackage/addpackage.component';
     MatRadioModule,
     MatSnackBarModule,
     NgxSpinnerModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    MatDialogModule
     
   ],
   providers: [],
