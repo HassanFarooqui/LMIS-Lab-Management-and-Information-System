@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AppServiceService } from '../app-service.service';
-
+import {MatTableModule, MatTableDataSource} from '@angular/material/table';
 @Component({
   selector: 'app-addpackage',
   templateUrl: './addpackage.component.html',
   styleUrls: ['./addpackage.component.css']
 })
 export class AddpackageComponent implements OnInit {
-
+  displayedColumns: string[] = ['TestID', 'TestName' ,'TestCharges', 'TestDiscPerc', 'TestDiscAmount' , 'NetCharges', 'Actions'];
+  //displayedColumns: string[] = ['TestID', 'TestName' ];
   dropdownList = [];
   selectedItems = [];
   dropdownSettings: IDropdownSettings;
 
-  constructor(private appService: AppServiceService) { }
 
+  constructor(private appService: AppServiceService) { }
+  TestListDataSource = new MatTableDataSource(this.selectedItems);
   ngOnInit(): void {
     this.getTestList(); 
     // this.selectedItems = [
@@ -32,14 +34,15 @@ export class AddpackageComponent implements OnInit {
     };
   }
   onItemSelect(item: any) {
-    console.log(item);
+    this.selectedItems.push(item.TestName);
+    console.log(this.selectedItems);
+    this.TestListDataSource = new MatTableDataSource(this.selectedItems);
   }
   onSelectAll(items: any) {
     console.log(items);
   }
 
-  getTestList(){
-    
+  getTestList(){    
     this.appService.listOfTest().subscribe(
       response => {
         if(response.success){
