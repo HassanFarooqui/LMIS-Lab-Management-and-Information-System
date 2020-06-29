@@ -27,6 +27,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {NgxSpinnerModule } from "ngx-spinner";
 import {TestListComponent } from './test-list/test-list.component';
 import { AddtestComponent } from './addtest/addtest.component';
+import { PanellistComponent } from './panellist/panellist.component';
+import { AddpanelComponent } from './addpanel/addpanel.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AddtestComponent } from './addtest/addtest.component';
     AddPatientComponent,
     PatientComponent,
     TestListComponent,
-    AddtestComponent
+    AddtestComponent,
+    PanellistComponent,
+    AddpanelComponent
   ],
   imports: [
     BrowserModule,
