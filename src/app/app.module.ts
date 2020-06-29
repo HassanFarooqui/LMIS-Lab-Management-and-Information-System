@@ -29,7 +29,8 @@ import {TestListComponent } from './test-list/test-list.component';
 import { AddtestComponent } from './addtest/addtest.component';
 import { PanellistComponent } from './panellist/panellist.component';
 import { AddpanelComponent } from './addpanel/addpanel.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AddpackageComponent } from './addpackage/addpackage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { AddpanelComponent } from './addpanel/addpanel.component';
     TestListComponent,
     AddtestComponent,
     PanellistComponent,
-    AddpanelComponent
+    AddpanelComponent,
+    AddpackageComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { AddpanelComponent } from './addpanel/addpanel.component';
     MatCheckboxModule,
     MatRadioModule,
     MatSnackBarModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgMultiSelectDropDownModule.forRoot()
     
   ],
   providers: [],
