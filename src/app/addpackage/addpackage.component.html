@@ -1,66 +1,90 @@
-<p>addpackage works!</p>
-<div class="container text-center">
+<p>Add Package </p>
 
-    <ng-multiselect-dropdown [placeholder]="'Test List'" [data]="dropdownList" [(ngModel)]="selectedItems"
-        [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-    </ng-multiselect-dropdown>
+
+<div style="width: 1000px;" >
+  <mat-grid-list cols="5" rowHeight="4:2">
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Package Name:</mat-label>
+        <input required #PName="ngModel" [(ngModel)]="PackageName" matInput placeholder="Covid 19:" type="text"
+          name="Packages Name">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-label>Incentive Allowed:</mat-label><br />
+      <mat-checkbox [(ngModel)]="Incentive"></mat-checkbox>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-label>Active:</mat-label><br />
+      <mat-checkbox [(ngModel)]="Active"></mat-checkbox>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-label>IsPartial:</mat-label><br />
+      <mat-checkbox [(ngModel)]="IsPartial"></mat-checkbox>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Credit Limit:</mat-label>
+        <input required #CLimit="ngModel" [(ngModel)]="CreditLimit" matInput placeholder="50000 Rs" type="number"
+          name="Packages Name">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
-<p>{{this.selectedItems}}</p>
+
+<div class="container text-center">
+  <ng-multiselect-dropdown [placeholder]="'Test List'" [data]="dropdownList" [(ngModel)]="selectedItems"
+    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+  </ng-multiselect-dropdown>
+</div>
 
 <div class="table_class">
-    <table mat-table [dataSource]="TestListDataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="TestListDataSource" class="mat-elevation-z8">
 
-        <!-- Position Column
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container> -->
-      
-        <!-- Name Column -->
-        <ng-container matColumnDef="TestID">
-          <th mat-header-cell *matHeaderCellDef> Test Id </th>
-          <td mat-cell *matCellDef="let element"> {{element.TestId}} </td>
-        </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="TestID">
+      <th mat-header-cell *matHeaderCellDef> Test Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.TestId}} </td>
+    </ng-container>
 
-          <!-- Weight Column -->
-        <ng-container matColumnDef="TestName">
-          <th mat-header-cell *matHeaderCellDef> Test Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.TestName}} </td>
-        </ng-container>      
-                
-           <ng-container matColumnDef="TestCharges">
-            <th mat-header-cell *matHeaderCellDef> Test Charges </th>
-            <td mat-cell *matCellDef="let element"> {{element.TestCharges}} </td>
-          </ng-container>
-      
-         
-          <ng-container matColumnDef="TestDiscPerc">
-              <th mat-header-cell *matHeaderCellDef> Disc. Percentage </th>
-              <td mat-cell *matCellDef="let element"> {{element.TestDiscPerc}} </td>
-            </ng-container>
-  
-          <ng-container matColumnDef="TestDiscAmount">
-              <th mat-header-cell *matHeaderCellDef> Disc. Amount </th>
-              <td mat-cell *matCellDef="let element"> {{element.TestDiscAmount}} </td>
-            </ng-container>
-  
-         <ng-container matColumnDef="NetCharges">
-                <th mat-header-cell *matHeaderCellDef> Net Charges </th>
-                <td mat-cell *matCellDef="let element"> {{element.NetCharges}} </td>
-              </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="TestName">
+      <th mat-header-cell *matHeaderCellDef> Test Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.TestName}} </td>
+    </ng-container>
 
-              <ng-container matColumnDef="Actions">
-              <th mat-header-cell *matHeaderCellDef> Actions </th>
-              <td mat-cell *matCellDef="let element">
-                  <button mat-raised-button color="warn">Delete</button>
-              </td>
-          </ng-container> 
-      
-      
+    <ng-container matColumnDef="TestCharges">
+      <th mat-header-cell *matHeaderCellDef> Test Charges </th>
+      <td mat-cell *matCellDef="let element"> {{element.TestCharges}} </td>
+    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
-      
-      </table>
+
+    <ng-container matColumnDef="TestDiscPerc">
+      <th mat-header-cell *matHeaderCellDef> Disc. Percentage </th>
+      <td mat-cell *matCellDef="let element"> {{element.TestDiscPerc}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="TestDiscAmount">
+      <th mat-header-cell *matHeaderCellDef> Disc. Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.TestDiscAmount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="NetCharges">
+      <th mat-header-cell *matHeaderCellDef> Net Charges </th>
+      <td mat-cell *matCellDef="let element"> {{element.NetCharges}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn">Delete</button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+  </table>
 </div>

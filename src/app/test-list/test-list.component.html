@@ -7,7 +7,6 @@
 <div class="button">
     <button mat-raised-button color="primary" (click)="Add()">Add Test </button>
 </div>
-
 <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" #input>
@@ -61,8 +60,7 @@
                     >Edit</button>
                   <button mat-raised-button color="warn">Delete</button>
               </td>
-          </ng-container> 
-      
+          </ng-container>     
       
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -73,4 +71,5 @@
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
       </table>
-</div>
+
+    </div>

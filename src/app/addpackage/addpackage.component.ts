@@ -12,7 +12,11 @@ export class AddpackageComponent implements OnInit {
   //displayedColumns: string[] = ['TestID', 'TestName' ];
   dropdownList = [];
   selectedItems = [];
-  
+  PackageName : any;
+  Incentive : boolean = false;
+  Active : boolean = false;
+  IsPartial : boolean = false;
+  CreditLimit : any;
   dropdownSettings: IDropdownSettings;
 
 
