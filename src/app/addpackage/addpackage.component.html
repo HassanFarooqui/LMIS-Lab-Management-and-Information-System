@@ -31,16 +31,18 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+<div class="ddlTestList">
+  <mat-form-field appearance="fill" >
+    <mat-label>Test List</mat-label>
+    <mat-select [(ngModel)] = "multiSelectId" multiple>
+      <mat-option *ngFor="let test of multiSelectDataSource" (click) = "addTestInList()" [value]="test.TestId">{{test.TestName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
-<mat-form-field appearance="fill">
-  <mat-label>Toppings</mat-label>
-  <mat-select [formControl] = "multipleTestList" multiple>
-    <mat-option *ngFor="let test of multiSelectDataSource" (click) = "addTestInList()" [value]="test.TestId">{{test.TestName}}</mat-option>
-  </mat-select>
-</mat-form-field>
 
 <div class="table_class">
-  <table mat-table [dataSource]="TestListDataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="TestListDataSource" class="mat-elevation-z8" *ngIf = "TestListDataSource.length > 0">
 
     <!-- Name Column -->
     <ng-container matColumnDef="TestID">
@@ -59,10 +61,11 @@
       <td mat-cell *matCellDef="let element"> {{element.TestCharges}} </td>
     </ng-container>
 
-
     <ng-container matColumnDef="TestDiscPerc">
       <th mat-header-cell *matHeaderCellDef> Disc. Percentage </th>
-      <td mat-cell *matCellDef="let element"> {{element.TestDiscPerc}} </td>
+      <td mat-cell *matCellDef="let element">  
+        <input required #PName="ngModel" [(ngModel)]="element.TestDiscPerc" matInput (keyup) = "calculateDiscount()" type="text">
+       </td>
     </ng-container>
 
     <ng-container matColumnDef="TestDiscAmount">
@@ -81,8 +84,6 @@
         <button mat-raised-button color="warn">Delete</button>
       </td>
     </ng-container>
-
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 

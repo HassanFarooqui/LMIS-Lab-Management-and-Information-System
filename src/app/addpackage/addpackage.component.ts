@@ -11,7 +11,7 @@ import { FormControl } from '@angular/forms';
 export class AddpackageComponent implements OnInit {
   displayedColumns: string[] = ['TestID', 'TestName' ,'TestCharges', 'TestDiscPerc', 'TestDiscAmount' , 'NetCharges', 'Actions'];
   //displayedColumns: string[] = ['TestID', 'TestName' ];
-  dropdownList = [];
+  originalTestList = [];
   selectedItems = [];
   selectItemData : any;
   PackageName : any;
@@ -23,10 +23,11 @@ export class AddpackageComponent implements OnInit {
   dropdownSettings: IDropdownSettings;
   multipleTestList = new FormControl();
   multiSelectDataSource = [];
+  multiSelectId : any = [];
 
 
   constructor(private appService: AppServiceService) { }
-  TestListDataSource = new MatTableDataSource(this.selectedItems);
+  TestListDataSource : any = []
   ngOnInit(): void {
     this.getTestList(); 
     // this.selectedItems = [
@@ -37,8 +38,7 @@ export class AddpackageComponent implements OnInit {
   }
   onItemSelect(item: any) {
     this.selectedItems.push(item.TestName);
-    
-    console.log(this.dropdownList);
+   
 
     this.TestListDataSource = new MatTableDataSource(this.selectedItems);
   }
@@ -51,11 +51,11 @@ export class AddpackageComponent implements OnInit {
       response => {
         if(response.success){
         if(response.model.length > 0){
+          this.originalTestList = response.model;
                 response.model.forEach(element => {
                   var obj = {
                     TestId : element.TestId,
-                    TestName: element.TestName + '' + element.TestTypeId
-                   
+                    TestName: element.TestId + ' | ' + element.TestName + ' | Rs: ' + element.TestCharges + ' | Disc: ' + element.TestDiscPerc                 
                    } 
                    this.multiSelectDataSource.push(obj);
                  });
@@ -66,7 +66,19 @@ export class AddpackageComponent implements OnInit {
   }
 
   addTestInList(){
-     this.selectedItems.push(this.multipleTestList.value);
-     this.selectItemData = this.multiSelectDataSource.find(s => s.TestId == this.selectedItems);
+    this.TestListDataSource = [];
+    this.multiSelectId.forEach(element => {
+     var obj = this.originalTestList.filter(x => x.TestId == element)[0];
+     this.TestListDataSource.push(obj);     
+    });
+  }
+
+  calculateDiscount(){
+    
+    
+    if (this.TestListDataSource.TestDiscPerc != undefined && this.TestListDataSource.TestDiscPerc > 0){
+      this.TestListDataSource.TestDiscAmount = Math.round((this.TestListDataSource.TestCharges / 100) * this.TestListDataSource.TestDiscPerc);
+      this.TestListDataSource.TestNetcharges = Math.round(this.TestListDataSource.TestCharges - this.TestListDataSource.TestDiscAmount);
+    } 
   }
 }
