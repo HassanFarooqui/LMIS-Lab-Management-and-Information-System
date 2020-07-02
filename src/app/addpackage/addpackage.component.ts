@@ -30,12 +30,14 @@ export class AddpackageComponent implements OnInit {
   Active: boolean = false;
   IsPartial: boolean = false;
   CreditLimit: any;
-  Totaldiscount: any;
   dropdownSettings: IDropdownSettings;
   multipleTestList = new FormControl();
   multiSelectDataSource = [];
   multiSelectId: any = [];
   TestListDataSource: Array<Package> = [];
+  GrandTotal : any;
+  Totaldiscount: any;
+  
 
 
   constructor(private appService: AppServiceService) { }

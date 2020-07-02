@@ -31,7 +31,7 @@
   </mat-grid-list>
 </div>
 
-<div >
+<div>
   <mat-form-field appearance="fill" class="ddlTestList" >
     <mat-label>Test List</mat-label>
     <mat-select [(ngModel)] = "multiSelectId" multiple>
@@ -41,7 +41,7 @@
 </div>
 
 
-<div class="table_class">
+<div class="table_class" >
   <table mat-table [dataSource]="TestListDataSource" class="mat-elevation-z8" *ngIf = "TestListDataSource.length > 0">
 
     <!-- Name Column -->
@@ -86,15 +86,23 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
   </table>
-
-  <mat-card >
-    <mat-form-field>
-      <mat-label>Total Discount: </mat-label>
-      <input required #TDiscount="ngModel" [(ngModel)]="Totaldiscount" matInput placeholder="50000 Rs" type="number"
-        name="Total Discount">
-    </mat-form-field>
-  </mat-card>
 </div>
+  <div style="width: 700px;">
+    <mat-grid-list cols="3" rowHeight="4:2">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Total Discount:</mat-label>
+          <input required #TDiscount="ngModel" [(ngModel)]="Totaldiscount" matInput placeholder="Totaldiscount" type="text"
+            name="Total Discount" readonly>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Grand Total:</mat-label>
+          <input required #GTotal="ngModel" [(ngModel)]="GrandTotal" matInput placeholder="Grand Total" type="text"
+            name="Grand Total" readonly>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
