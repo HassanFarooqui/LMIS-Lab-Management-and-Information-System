@@ -32,11 +32,12 @@
   </mat-grid-list>
 </div>
 
-<div class="container text-center">
-  <ng-multiselect-dropdown [placeholder]="'Test List'" [data]="dropdownList" [(ngModel)]="selectedItems"
-    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-  </ng-multiselect-dropdown>
-</div>
+<mat-form-field appearance="fill">
+  <mat-label>Toppings</mat-label>
+  <mat-select [formControl] = "multipleTestList" multiple>
+    <mat-option *ngFor="let test of multiSelectDataSource" (click) = "addTestInList()" [value]="test.TestId">{{test.TestName}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
 <div class="table_class">
   <table mat-table [dataSource]="TestListDataSource" class="mat-elevation-z8">
@@ -87,4 +88,12 @@
 
 
   </table>
+
+  <mat-card >
+    <mat-form-field>
+      <mat-label>Total Discount: </mat-label>
+      <input required #TDiscount="ngModel" [(ngModel)]="Totaldiscount" matInput placeholder="50000 Rs" type="number"
+        name="Total Discount">
+    </mat-form-field>
+  </mat-card>
 </div>

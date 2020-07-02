@@ -69,7 +69,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSnackBarModule,
     NgxSpinnerModule,
     NgMultiSelectDropDownModule.forRoot(),
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
     
   ],
   providers: [],
