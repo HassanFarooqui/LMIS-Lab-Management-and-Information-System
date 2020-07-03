@@ -64,7 +64,8 @@
     <ng-container matColumnDef="TestDiscPerc">
       <th mat-header-cell *matHeaderCellDef> Disc. Percentage </th>
       <td mat-cell *matCellDef="let element">  
-        <input required #PName="ngModel" [(ngModel)]="element.TestDiscPerc" matInput (keyup) = "calculateDiscount($event.target.value, element)" type="text" *ngIf = "element.TestDiscPerc <= 100">
+        <input required #PName="ngModel" [(ngModel)]="element.TestDiscPerc" matInput (keyup) = "calculateDiscount($event.target.value, element)" type="text">
+       
        </td>
     </ng-container>
 
@@ -81,7 +82,7 @@
     <ng-container matColumnDef="Actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="warn" (click)="DeleteTestInGrid()">Delete</button>
+        <button mat-raised-button color="warn" (click)="DeleteTestInGrid(element.TestId)">Delete</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

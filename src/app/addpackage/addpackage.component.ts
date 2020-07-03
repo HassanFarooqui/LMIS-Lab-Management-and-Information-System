@@ -3,6 +3,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AppServiceService } from '../app-service.service';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
+import { element } from 'protractor';
 
 interface Package {
   TestId: number;
@@ -34,10 +35,12 @@ export class AddpackageComponent implements OnInit {
   multipleTestList = new FormControl();
   multiSelectDataSource = [];
   multiSelectId: any = [];
-  TestListDataSource: Array<Package> = [];
-  GrandTotal : any;
+  TestListDataSource: any = [];//Array<Package> = [];
+  GrandTotal: any;
   Totaldiscount: any;
+  duplicateDataSource : any;
   
+
 
 
   constructor(private appService: AppServiceService) { }
@@ -51,7 +54,7 @@ export class AddpackageComponent implements OnInit {
     //this.TestListDataSource = new MatTableDataSource(this.selectedItems);
   }
   onSelectAll(items: any) {
-   this.selectedItems.push(items.TestName);
+    this.selectedItems.push(items.TestName);
   }
 
   getTestList() {
@@ -77,21 +80,41 @@ export class AddpackageComponent implements OnInit {
     this.TestListDataSource = [];
     this.multiSelectId.forEach(element => {
       var obj = this.originalTestList.filter(x => x.TestId == element)[0];
+
       this.TestListDataSource.push(obj);
     });
+    this.calculatTotalDiscountAndAmount();
   }
 
   calculateDiscount(discountPerc: any, element) {
-    if(discountPerc > 100){
-       discountPerc = 0;
+    if (discountPerc > 100) {
+      element.TestDiscPerc = 0;
+      element.TestDiscAmount = 0;
+      element.NetCharges = element.TestCharges;
     }
-    else if (discountPerc != undefined && discountPerc > 0) {
+    else if (discountPerc != undefined && discountPerc > 0 && discountPerc <= 100) {
       element.TestDiscAmount = Math.round((element.TestCharges / 100) * discountPerc);
       element.NetCharges = Math.round(element.TestCharges - element.TestDiscAmount);
     }
+    
   }
 
-  DeleteTestInGrid(){
-    console.log('2');
+  DeleteTestInGrid(Id) {
+   this.duplicateDataSource.forEach (item =>{
+      let index: number = this.duplicateDataSource.findIndex(d => d === item);
+      this.duplicateDataSource.splice(index,1);
+
+      this.TestListDataSource = new MatTableDataSource<Element>(this.duplicateDataSource);
+    })
   }
+
+  calculatTotalDiscountAndAmount(){
+    this.Totaldiscount = 0;
+    this.GrandTotal = 0;
+    this.TestListDataSource.forEach(element => {
+      this.Totaldiscount = this.Totaldiscount+element.TestDiscAmount;
+      this.GrandTotal = this.GrandTotal + element.NetCharges;
+    });
+  }
+  
 }
