@@ -103,7 +103,6 @@ export class AddpackageComponent implements OnInit {
    this.duplicateDataSource.forEach (item =>{
       let index: number = this.duplicateDataSource.findIndex(d => d === item);
       this.duplicateDataSource.splice(index,1);
-
       this.TestListDataSource = new MatTableDataSource<Element>(this.duplicateDataSource);
     })
   }
@@ -115,6 +114,22 @@ export class AddpackageComponent implements OnInit {
       this.Totaldiscount = this.Totaldiscount+element.TestDiscAmount;
       this.GrandTotal = this.GrandTotal + element.NetCharges;
     });
+  }
+
+  addOrEditPackageMaster() {
+    this.appService.addOrEditPackage(0, this.PackageName, this.Incentive, this.Active, this.IsPartial, this.CreditLimit, this.Totaldiscount, this.GrandTotal).subscribe(
+      response => {
+        if (response.success) {
+          var PackageMasterId = response.model.PackageMasterId;
+          this.appService.addOrEditPackagedetail(this.TestListDataSource).subscribe(
+            test => {
+
+            },
+          )
+
+        }
+      }
+    );
   }
   
 }

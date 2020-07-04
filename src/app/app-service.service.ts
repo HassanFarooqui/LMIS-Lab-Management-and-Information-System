@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SettingsService } from '../app/Services/settings.service';
 import { TestBed } from '@angular/core/testing';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -101,6 +102,47 @@ export class AppServiceService {
    .set('NetCharges', TestNetCharges)
    .set('IsActive', status)
    return this.http.post(url, payload);
+  }
+
+  addOrEditPackage(PackageMasterID : any, PackageName : any, Incentive: any, Active: any, IsPartial: any, CreditLimit: any, Totaldiscount: any, GrandTotal: any): any{
+      let url : string;
+      url = this.baseUrl + 'Test/AddPackageMaster';
+      let PackageObj = new HttpParams()
+      .set('PackageMasterId', PackageMasterID)
+      .set('PackageName', PackageName)
+      .set('IsIncentiveAllowed', Incentive)
+      .set('IsActive', Active)
+      .set('IsPartialPackageBookingAllowed', IsPartial)
+      .set('CreaditLimit', CreditLimit)
+      .set('TotalDiscount',Totaldiscount)
+      .set('GrandTotal', GrandTotal)
+      return this.http.post(url, PackageObj)
+  }
+
+
+  addOrEditPackagedetail(TestTableDataSource: any): any {
+    let url = this.baseUrl + 'Test/AddPackageDetail';
+    var payload: any = [];
+    // TestTableDataSource.forEach(element => {
+    //   let PackageDetailObj = new HttpParams()
+    //     .set('PackageDetailID', element.PackageDetailID)
+    //     .set('TestRegID', element.TestId)
+    //     .set('TestCharges', element.TestCharges)
+    //     .set('DiscountPerc', element.TestDiscPerc)
+    //     .set('DiscountAmount', element.TestDiscAmount)
+    //     .set('NetCharges', element.NetCharges)
+    //   payload.push(PackageDetailObj);  
+
+    // });
+    let data = {
+      packageDetail : TestTableDataSource,
+      PackageMasterID : '1'
+    }
+    // let New = new HttpParams()
+    // .set('packageDetail',TestTableDataSource )
+    // .set('PackageMasterID','1')
+    return this.http.post(url, data);
+
   }
 }
 
