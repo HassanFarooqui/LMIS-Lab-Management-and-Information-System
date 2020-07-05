@@ -117,15 +117,15 @@ export class AddpackageComponent implements OnInit {
   }
 
   addOrEditPackageMaster() {
-    this.appService.addOrEditPackage(0, this.PackageName, this.Incentive, this.Active, this.IsPartial, this.CreditLimit, this.Totaldiscount, this.GrandTotal).subscribe(
+    this.appService.addOrEditPackage(0, this.PackageName, this.Incentive, this.Active, this.IsPartial, this.CreditLimit, this.Totaldiscount, this.GrandTotal, this.TestListDataSource ).subscribe(
       response => {
         if (response.success) {
           var PackageMasterId = response.model.PackageMasterId;
-          this.appService.addOrEditPackagedetail(this.TestListDataSource).subscribe(
-            test => {
+          // this.appService.addOrEditPackagedetail(this.TestListDataSource).subscribe(
+          //   test => {
 
-            },
-          )
+          //   },
+          // )
 
         }
       }
