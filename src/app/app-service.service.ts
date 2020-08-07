@@ -119,7 +119,7 @@ export class AppServiceService {
 
   addOrEditPackage(PackageMasterID: any, PackageName: any, Incentive: any, Active: any, IsPartial: any, CreditLimit: any, Totaldiscount: any, GrandTotal: any, TestTableDataSource: any): any {
     let url: string;
-    url = this.baseUrl + 'Test/PackgeAddKardo';
+    url = this.baseUrl + 'Test/AddPackageDetail';
     let obj: any = {
       PackageMasterId: PackageMasterID,
       PackageName: PackageName,
@@ -130,22 +130,18 @@ export class AppServiceService {
       TotalDiscount: Totaldiscount,
       GrandTotal: GrandTotal
     }
-    // let PackageObj = new HttpParams()
-    // .set('PackageMasterId', PackageMasterID)
-    // .set('PackageName', PackageName)
-    // .set('IsIncentiveAllowed', Incentive)
-    // .set('IsActive', Active)
-    // .set('IsPartialPackageBookingAllowed', IsPartial)
-    // .set('CreaditLimit', CreditLimit)
-    // .set('TotalDiscount',Totaldiscount)
-    // .set('GrandTotal', GrandTotal)
-
-    var data = {
-      pkg: obj,
-      ListOfTestPackage: TestTableDataSource,
-      PackageName: "Test"
-    }
-    return this.http.post(url, data, this.httpOptions)
+    // var data = {
+    //   pkg: obj,
+    //   ListOfTestPackage: TestTableDataSource,
+    //   PackageName: "Test"
+    // }
+    var jsonDetail = JSON.stringify(TestTableDataSource);
+    var jsonMaster = JSON.stringify(obj);
+    let payload = new HttpParams()
+    .set('PackageMasterJson',jsonMaster)
+    .set('PackageDetailsJson', jsonDetail)
+      
+    return this.http.post(url, payload)
   }
 
 

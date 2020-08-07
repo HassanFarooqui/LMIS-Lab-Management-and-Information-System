@@ -65,7 +65,7 @@ export class AddpackageComponent implements OnInit {
             this.originalTestList = response.model;
             response.model.forEach(element => {
               var obj = {
-                TestId: element.TestId,
+                TestRegId: element.TestId,
                 TestName: element.TestId + ' | ' + element.TestName + ' | Rs: ' + element.TestCharges + ' | Disc: ' + element.TestDiscPerc
               }
               this.multiSelectDataSource.push(obj);

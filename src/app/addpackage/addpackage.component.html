@@ -35,7 +35,7 @@
   <mat-form-field appearance="fill" class="ddlTestList" >
     <mat-label>Test List</mat-label>
     <mat-select [(ngModel)] = "multiSelectId" multiple>
-      <mat-option *ngFor="let test of multiSelectDataSource" (click) = "addTestInList()" [value]="test.TestId">{{test.TestName}}</mat-option>
+      <mat-option *ngFor="let test of multiSelectDataSource" (click) = "addTestInList()" [value]="test.TestRegId">{{test.TestName}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
