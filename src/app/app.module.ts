@@ -32,6 +32,7 @@ import { AddpanelComponent } from './addpanel/addpanel.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddpackageComponent } from './addpackage/addpackage.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LabbookingComponent } from './labbooking/labbooking.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddtestComponent,
     PanellistComponent,
     AddpanelComponent,
-    AddpackageComponent
+    AddpackageComponent,
+    LabbookingComponent
+
   ],
   imports: [
     BrowserModule,

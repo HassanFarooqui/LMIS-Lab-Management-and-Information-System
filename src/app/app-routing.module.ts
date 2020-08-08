@@ -7,6 +7,7 @@ import { PatientComponent } from '../app/patient/patient.component';
 import { TestListComponent } from '../app/test-list/test-list.component';
 import { AddtestComponent} from '../app/addtest/addtest.component';
 import { AddpackageComponent} from '../app/addpackage/addpackage.component';
+import { LabbookingComponent} from '../app/labbooking/labbooking.component';
 import { from } from 'rxjs';
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'patient', component: PatientComponent },
   { path: 'Test', component: TestListComponent},
   { path: 'addTest', component: AddtestComponent},
-  { path: 'Package', component: AddpackageComponent}
+  { path: 'Package', component: AddpackageComponent},
+  { path: 'LabBooking', component: LabbookingComponent}
 ];
 
 @NgModule({
