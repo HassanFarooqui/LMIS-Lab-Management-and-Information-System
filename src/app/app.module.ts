@@ -34,6 +34,7 @@ import { AddpackageComponent } from './addpackage/addpackage.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LabbookingComponent } from './labbooking/labbooking.component';
 import { PackagelistComponent } from './packagelist/packagelist.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { PackagelistComponent } from './packagelist/packagelist.component';
     NgxSpinnerModule,
     NgMultiSelectDropDownModule.forRoot(),
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
     
   ],
   providers: [],

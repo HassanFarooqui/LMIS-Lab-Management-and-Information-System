@@ -1,6 +1,239 @@
-<p>packagelist works!</p>
-
-
 <div class="button">
-    <button mat-raised-button color="primary" (click)="AddPackage()">Add Package </button>
+    <button type="button" class="btn btn-info" (click)="AddPackage()">Add Package </button>
 </div>
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+</nav>
+
+<div class="panel panel-default with-padding bg-promary" style="background-color: #E9ECEF">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="m-h-24">
+                    Patient Barcode (PID):
+                    <Label ID="txtPatientBarCode" Font-Bold="true"> P-1510023</Label>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="m-h-24">
+                    Patient (Full Name):
+                    <Label ID="txtFirstName" Font-Bold="false">Hassan Farooqui</Label>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="m-h-24">
+                        Type (Panel/Self):
+                        <Label ID="txtType" Font-Bold="false">XYZ</Label>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="m-h-24">
+                        Lab No:
+                        <Label ID="txtLabNo" Font-Size="14px" Font-Italic="true">xxxxxx</Label>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="m-h-24">
+                    Gender:
+                    <Label ID="txtGender" Font-Bold="false">Male</Label>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="m-h-24">
+                    Age:
+                    <Label ID="txtAgee" Font-Bold="false">27</Label>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="m-h-24">
+                        Mobile No:
+                        <Label ID="txtMobileNO" Font-Bold="false">0345-879587</Label>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="m-h-24">
+                    <div class="col-lg-4" style="margin: 0; padding: 0">
+                        Booking Date:
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="input-group">
+
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="m-h-24">Refered Type: </label>
+                    <div class="form-group">
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>-Please
+                                Select-</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button ngbDropdownItem>Action - 1</button>
+                                <button ngbDropdownItem>Another Action</button>
+                                <button ngbDropdownItem>Something else is here</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4">
+                <div class="form-group">
+                    <label class="m-h-24">
+                        Partner Name: *
+                    </label>
+                    <div class="form-group">
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>-Please
+                                Select-</button>
+
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button ngbDropdownItem>Action - 1</button>
+                                <button ngbDropdownItem>Another Action</button>
+                                <button ngbDropdownItem>Something else is here</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="m-h-24">Pakage:</label>
+                    <div class="form-group">
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>-Please
+                                Select-</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button ngbDropdownItem>Action - 1</button>
+                                <button ngbDropdownItem>Another Action</button>
+                                <button ngbDropdownItem>Something else is here</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="m-h-24">Emp / Reference Code :</label>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Ref No" aria-label="Search">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="panel panel-default with-padding" style="background-color: #fcfcfc; height: 250px">
+
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="panel panel-default with-padding" style="background-color: #fcfcfc;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                                <div class="col-sm-6">
+                                    <label>Gross Total:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <Label ID="txtGrossTotal" runat="server" Style="text-align: right">0</Label>
+                                </div>
+                            </div>
+                            <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                                <div class="col-sm-6">
+                                    <label style="text-align: left;">Discount:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <Label ID="txtDiscount" runat="server" Style="text-align: right">0</Label>
+                                </div>
+                            </div>
+                            <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                                <div class="col-sm-6">
+                                    <label style="text-align: left;">Net Bill:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <Label ID="TxtNetBill" runat="server" Style="text-align: right">0</Label>
+                                </div>
+                            </div>
+                            <!-- <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                                <div class="col-sm-6">
+                                    <label style="text-align: left;">Cash Recieved:</label>
+                                </div>
+                                <div class="col-sm-6" />
+                            </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                        <div class="col-sm-6">
+                            <label style="text-align: left;">Balance/ Dues:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <Label ID="txtBalanceDues" ForeColor="Red" Font-Size="Medium" Font-Bold="true"></Label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                        <div class="col-sm-6">
+                            <label style="text-align: left;">Billing Type</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #ddd; padding-top: 2px">
+                        <div class="col-sm-6">
+                            <label style="text-align: left;">Reference #: </label>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label style="text-align: left;">Remarks:</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

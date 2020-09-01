@@ -15,6 +15,7 @@ interface Package {
   NetCharges: number;
 }
 
+
 @Component({
   selector: 'app-addpackage',
   templateUrl: './addpackage.component.html',
@@ -123,13 +124,10 @@ export class AddpackageComponent implements OnInit {
           var PackageMasterId = response.model.PackageMasterId;
           // this.appService.addOrEditPackagedetail(this.TestListDataSource).subscribe(
           //   test => {
-
           //   },
           // )
-
         }
       }
     );
-  }
-  
+  }  
 }

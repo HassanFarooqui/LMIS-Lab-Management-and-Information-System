@@ -18,9 +18,6 @@ export class AppServiceService {
       'Host': 'localhost:65305', 'Content-Length': '512'
     })
   };
- 
-
-
 
   constructor(private http: HttpClient, private setting: SettingsService) {
     this.baseUrl = this.setting.getSettings.baseUrl;
@@ -167,7 +164,12 @@ export class AppServiceService {
     // .set('packageDetail',TestTableDataSource )
     // .set('PackageMasterID','1')
     return this.http.post(url, data, { headers: this.header }).toPromise();
+  }
 
+
+  listOfPackages(): any {
+    let url = this.baseUrl + 'Package/getpackageList'
+    return this.http.get(url);
   }
 }
 
